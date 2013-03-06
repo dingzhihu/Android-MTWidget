@@ -1,4 +1,4 @@
-package com.meituan.widget.demo;
+package com.meituan.widget.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
