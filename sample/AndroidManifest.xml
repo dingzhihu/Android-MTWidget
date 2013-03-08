@@ -12,5 +12,33 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".usergrowth.SampleUserGrowthDefault"
+            android:label="UserGrowth/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.meituan.widget.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".usergrowth.SampleUserGrowthStyledLayout"
+            android:label="UserGrowth/Styled Layout">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.meituan.widget.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".usergrowth.SampleUserGrowthStyledTheme"
+            android:label="UserGrowth/Styled Theme"
+            android:theme="@style/StyledMTWidgets">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.meituan.widget.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

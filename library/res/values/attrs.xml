@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MTWidget">
+        <attr name="mtUserGrowthViewStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="UserGrowthView">
+        <attr name="user_growth_drawable_0" format="reference" />
+        <attr name="user_growth_drawable_1" format="reference" />
+        <attr name="user_growth_drawable_2" format="reference" />
+        <attr name="user_growth_drawable_3" format="reference" />
+        <attr name="user_growth_drawable_4" format="reference" />
+        <attr name="user_growth_drawable_5" format="reference" />
+        <attr name="user_growth_drawable_6" format="reference" />
+        <attr name="user_growth_progress_drawable" format="reference" />
+        <attr name="user_growth_secondary_progress_drawable" format="reference" />
+        <attr name="android:drawablePadding" />
+        <attr name="user_growth_progress_drawable_padding_bottom" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StyledMTWidgets" parent="@android:style/Theme.Light">
+        <item name="mtUserGrowthViewStyle">@style/CustomUserGrowthView</item>
+    </style>
+
+
+    <style name="CustomUserGrowthView">
+        <item name="user_growth_progress_drawable_padding_bottom">5dp</item>
+    </style>
+
+</resources>
