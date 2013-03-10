@@ -1,4 +1,4 @@
-package com.meituan.widget;
+package com.meituan.android.widget;
 
 /**
  * Created with IntelliJ IDEA.

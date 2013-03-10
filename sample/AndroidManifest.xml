@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.meituan.widget.sample"
+          package="com.meituan.android.widget.sample"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="16"/>
@@ -18,7 +18,7 @@
             android:label="UserGrowth/Default">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.meituan.widget.sample.SAMPLE" />
+                <category android:name="com.meituan.android.widget.sample.SAMPLE" />
             </intent-filter>
         </activity>
 
@@ -27,7 +27,7 @@
             android:label="UserGrowth/Styled Layout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.meituan.widget.sample.SAMPLE" />
+                <category android:name="com.meituan.android.widget.sample.SAMPLE" />
             </intent-filter>
         </activity>
 
@@ -37,7 +37,7 @@
             android:theme="@style/StyledMTWidgets">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.meituan.widget.sample.SAMPLE" />
+                <category android:name="com.meituan.android.widget.sample.SAMPLE" />
             </intent-filter>
         </activity>
     </application>

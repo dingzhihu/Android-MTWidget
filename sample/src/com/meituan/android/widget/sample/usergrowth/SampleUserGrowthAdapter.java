@@ -1,6 +1,6 @@
-package com.meituan.widget.sample.usergrowth;
+package com.meituan.android.widget.sample.usergrowth;
 
-import com.meituan.widget.UserGrowthAdapter;
+import com.meituan.android.widget.UserGrowthAdapter;
 
 /**
  * Created with IntelliJ IDEA.

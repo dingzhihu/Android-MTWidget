@@ -1,4 +1,4 @@
-package com.meituan.widget;
+package com.meituan.android.widget;
 
 import android.content.Context;
 import android.content.res.Resources;

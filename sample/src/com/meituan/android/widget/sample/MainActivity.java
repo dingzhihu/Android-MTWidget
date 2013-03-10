@@ -1,4 +1,4 @@
-package com.meituan.widget.sample;
+package com.meituan.android.widget.sample;
 
 import android.R;
 import android.app.ListActivity;
@@ -26,7 +26,7 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        String path = intent.getStringExtra("com.meituan.widget.sample.Path");
+        String path = intent.getStringExtra("com.meituan.android.widget.sample.Path");
 
         if (null == path) {
             path = "";
@@ -42,7 +42,7 @@ public class MainActivity extends ListActivity {
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-        mainIntent.addCategory("com.meituan.widget.sample.SAMPLE");
+        mainIntent.addCategory("com.meituan.android.widget.sample.SAMPLE");
 
         PackageManager pm = getPackageManager();
         List<ResolveInfo> list = pm.queryIntentActivities(mainIntent, 0);
@@ -98,7 +98,7 @@ public class MainActivity extends ListActivity {
     protected Intent browseIntent(String path) {
         Intent result = new Intent();
         result.setClass(this, MainActivity.class);
-        result.putExtra("com.meituan.widget.sample.Path", path);
+        result.putExtra("com.meituan.android.widget.sample.Path", path);
         return result;
     }
 

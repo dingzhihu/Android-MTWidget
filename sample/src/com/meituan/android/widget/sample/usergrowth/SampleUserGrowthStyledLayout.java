@@ -1,9 +1,9 @@
-package com.meituan.widget.sample.usergrowth;
+package com.meituan.android.widget.sample.usergrowth;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.meituan.widget.UserGrowthView;
-import com.meituan.widget.sample.R;
+import com.meituan.android.widget.UserGrowthView;
+import com.meituan.android.widget.sample.R;
 
 /**
  * Created with IntelliJ IDEA.

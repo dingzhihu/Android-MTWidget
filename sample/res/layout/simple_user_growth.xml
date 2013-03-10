@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <com.meituan.widget.UserGrowthView
+    <com.meituan.android.widget.UserGrowthView
         android:id="@+id/user_growth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -10,7 +10,7 @@
     <packaging>apk</packaging>
 
     <parent>
-        <groupId>com.meituan</groupId>
+        <groupId>com.meituan.android</groupId>
         <artifactId>widget-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -24,7 +24,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.meituan</groupId>
+            <groupId>com.meituan.android</groupId>
             <artifactId>widget</artifactId>
             <version>${project.version}</version>
             <type>apklib</type>
