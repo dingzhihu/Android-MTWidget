@@ -3,8 +3,7 @@ package com.meituan.android.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
@@ -21,15 +20,21 @@ import android.view.View;
 public class UserGrowthView extends View {
     private static final int MAX_GROWTH = 6;
 
-    private Drawable mLeftGrowthDrawable;
-    private Drawable mRightGrowthDrawable;
+    private UserGrowthAdapter mAdapter;
+
+    private int[] mGrowthValues;
     private Drawable[] mGrowthDrawables;
+    private Drawable mPreGrowthDrawable;
+    private Drawable mNextGrowthDrawable;
+    private int mDrawablePadding;
     private NinePatchDrawable mProgressDrawable;
     private NinePatchDrawable mSecondaryProgressDrawable;
-    private int mDrawablePadding;
-    private int mProgressDrawablePaddingBottom;
+    private int mProgressDrawablePadding;
+    private Drawable mIndicatorDrawable;
+    private float mIndicatorPadding;
+    private int mIndicatorCount;
 
-    private UserGrowthAdapter mAdapter;
+    private Paint mPaintText;
 
     public UserGrowthView(Context context) {
         this(context, null);
@@ -44,7 +49,11 @@ public class UserGrowthView extends View {
 
         final Resources res = getResources();
         final float defaultDrawablePadding = res.getDimension(R.dimen.default_user_growth_view_drawable_padding);
-        final float defaultProgressDrawablePaddingBottom = res.getDimension(R.dimen.default_user_growth_view_progress_drawable_padding_bottom);
+        final float defaultProgressDrawablePadding = res.getDimension(R.dimen.default_user_growth_view_progress_drawable_padding);
+        final float defaultIndicatorPadding = res.getDimension(R.dimen.default_user_growth_view_indicator_padding);
+        final int defaultIndicatorCount = res.getInteger(R.integer.default_user_growth_view_indicator_count);
+        final int defaultTextSize = res.getDimensionPixelSize(R.dimen.default_user_growth_view_text_size);
+        final int defaultTextColor = res.getColor(R.color.default_user_growth_view_text_color);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.UserGrowthView, defStyle, 0);
         mGrowthDrawables = new Drawable[MAX_GROWTH + 1];
@@ -59,14 +68,24 @@ public class UserGrowthView extends View {
         Drawable drawable = a.getDrawable(R.styleable.UserGrowthView_user_growth_progress_drawable);
         mProgressDrawable = (NinePatchDrawable) (drawable == null ? res.getDrawable(R.drawable.user_growth_progress) :
                 drawable);
+        mDrawablePadding = (int) a.getDimension(R.styleable.UserGrowthView_android_drawablePadding, defaultDrawablePadding);
+
         drawable = a.getDrawable(R.styleable.UserGrowthView_user_growth_secondary_progress_drawable);
         mSecondaryProgressDrawable = (NinePatchDrawable) (drawable == null ? res.getDrawable(R.drawable.user_growth_secondary_progress) :
                 drawable);
+        mProgressDrawablePadding = (int) a.getDimension(R.styleable.UserGrowthView_user_growth_progress_drawable_padding,
+                defaultProgressDrawablePadding);
 
-        mDrawablePadding = (int)a.getDimension(R.styleable.UserGrowthView_android_drawablePadding, defaultDrawablePadding);
-        mProgressDrawablePaddingBottom = (int)a.getDimension(R.styleable.UserGrowthView_user_growth_progress_drawable_padding_bottom,
-                defaultProgressDrawablePaddingBottom);
+        drawable = a.getDrawable(R.styleable.UserGrowthView_user_growth_indicator_drawable);
+        mIndicatorDrawable = (drawable == null ? res.getDrawable(R.drawable.user_growth_indicator) : drawable);
+        mIndicatorPadding = a.getDimension(R.styleable.UserGrowthView_user_growth_indicator_padding,
+                defaultIndicatorPadding);
+        mIndicatorCount = a.getInt(R.styleable.UserGrowthView_user_growth_indicator_count, defaultIndicatorCount);
 
+        mPaintText = new Paint();
+        mPaintText.setAntiAlias(true);
+        mPaintText.setTextSize(a.getDimension(R.styleable.UserGrowthView_android_textSize, defaultTextSize));
+        mPaintText.setColor(a.getColor(R.styleable.UserGrowthView_android_textColor, defaultTextColor));
 
     }
 
@@ -74,9 +93,9 @@ public class UserGrowthView extends View {
         if (adapter == null) {
             return;
         }
-        int currentGrowth = adapter.getCurrentGrowth();
-        if (currentGrowth < 0 || currentGrowth > MAX_GROWTH) {
-            throw new IllegalStateException(String.format("current growth %d not accepted", currentGrowth));
+        int curGrowth = adapter.getCurrentGrowth();
+        if (curGrowth < 0 || curGrowth > MAX_GROWTH) {
+            throw new IllegalStateException(String.format("current growth %d not accepted", curGrowth));
         }
 
         int curGrowthValue = adapter.getCurrentGrowthValue();
@@ -86,26 +105,42 @@ public class UserGrowthView extends View {
             throw new IllegalStateException(String.format("curGrowthValue:%d,preGrowthValue:%s,nextGrowthValue:%d,not accepted",
                     curGrowthValue, preGrowthValue, nextGrowthValue));
         }
+
         mAdapter = adapter;
 
+        calculateGrowthValues();
         calculateGrowthDrawables();
 
         requestLayout();
         invalidate();
     }
 
-    private void calculateGrowthDrawables() {
-        final int currentGrowth = mAdapter.getCurrentGrowth();
-        int leftGrowth, rightGrowth;
-        if (currentGrowth < MAX_GROWTH) {
-            leftGrowth = currentGrowth;
-            rightGrowth = currentGrowth + 1;
-        } else {
-            leftGrowth = currentGrowth - 1;
-            rightGrowth = currentGrowth;
+    private void calculateGrowthValues() {
+        mGrowthValues = new int[2 + mIndicatorCount];
+        final int pre = mAdapter.getPreGrowthValue();
+        final int next = mAdapter.getNextGrowthValue();
+
+        mGrowthValues[0] = pre;
+        mGrowthValues[mIndicatorCount + 1] = next;
+
+        int step = (next - pre) / (mIndicatorCount + 1);
+        for (int i = 1; i <= mIndicatorCount; i++) {
+            mGrowthValues[i] = pre + i * step;
         }
-        mLeftGrowthDrawable = getGrowthDrawable(leftGrowth);
-        mRightGrowthDrawable = getGrowthDrawable(rightGrowth);
+    }
+
+    private void calculateGrowthDrawables() {
+        final int curGrowth = mAdapter.getCurrentGrowth();
+        int preGrowth, nextGrowth;
+        if (curGrowth < MAX_GROWTH) {
+            preGrowth = curGrowth;
+            nextGrowth = curGrowth + 1;
+        } else {
+            preGrowth = curGrowth - 1;
+            nextGrowth = curGrowth;
+        }
+        mPreGrowthDrawable = getGrowthDrawable(preGrowth);
+        mNextGrowthDrawable = getGrowthDrawable(nextGrowth);
     }
 
     private Drawable getGrowthDrawable(int growth) {
@@ -149,13 +184,28 @@ public class UserGrowthView extends View {
             return;
         }
         final int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
-        float height;
+
+        float height = 0;
         final int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
         if (heightSpecMode == MeasureSpec.EXACTLY) {
             height = MeasureSpec.getSize(heightMeasureSpec);
         } else {
-            height = getPaddingTop() + getGrowthDrawableHeight() + getPaddingBottom();
+            height += getPaddingTop();
+
+            height += getGrowthDrawableHeight();
+
+            final int outIndicatorHeight = mIndicatorDrawable.getIntrinsicHeight() - mProgressDrawablePadding;
+            if (outIndicatorHeight > 0) {
+                height += outIndicatorHeight;
+            }
+            height += mIndicatorPadding;
+
+            Paint.FontMetrics metrics = mPaintText.getFontMetrics();
+            height += (metrics.descent - metrics.ascent);
+
+            height += getPaddingBottom();
         }
+
         final int measuredHeight = (int) height;
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
@@ -166,29 +216,69 @@ public class UserGrowthView extends View {
         if (mAdapter == null) {
             return;
         }
+
         final int paddingLeft = getPaddingLeft();
         final int paddingTop = getPaddingTop();
         final int paddingRight = getPaddingRight();
         final int measuredWidth = getMeasuredWidth();
 
-        Bitmap leftGrowthBitmap = ((BitmapDrawable) mLeftGrowthDrawable).getBitmap();
-        Bitmap rightGrowthBitmap = ((BitmapDrawable) mRightGrowthDrawable).getBitmap();
+        // draw growth drawables
+        Bitmap preGrowthBitmap = ((BitmapDrawable) mPreGrowthDrawable).getBitmap();
+        Bitmap nextGrowthBitmap = ((BitmapDrawable) mNextGrowthDrawable).getBitmap();
 
-        canvas.drawBitmap(leftGrowthBitmap, paddingLeft, paddingTop, null);
-        canvas.drawBitmap(rightGrowthBitmap, measuredWidth - paddingRight - mRightGrowthDrawable.getIntrinsicWidth(), paddingTop, null);
+        canvas.drawBitmap(preGrowthBitmap, paddingLeft, paddingTop, null);
+        canvas.drawBitmap(nextGrowthBitmap, measuredWidth - paddingRight - mNextGrowthDrawable.getIntrinsicWidth(), paddingTop, null);
 
-        int progressLeft = paddingLeft + mLeftGrowthDrawable.getIntrinsicWidth() + mDrawablePadding;
-        int progressRight = measuredWidth - paddingRight - mRightGrowthDrawable.getIntrinsicWidth() - mDrawablePadding;
-        int progressBottom = paddingTop + getGrowthDrawableHeight() - mProgressDrawablePaddingBottom;
+        // draw progress drawables
+        int progressLeft = paddingLeft + mPreGrowthDrawable.getIntrinsicWidth() + mDrawablePadding;
+        int progressRight = measuredWidth - paddingRight - mNextGrowthDrawable.getIntrinsicWidth() - mDrawablePadding;
+        int progressBottom = paddingTop + getGrowthDrawableHeight() - mProgressDrawablePadding;
         int progressTop = progressBottom - getProgressDrawableHeight();
         mProgressDrawable.setBounds(progressLeft, progressTop, progressRight, progressBottom);
         mProgressDrawable.draw(canvas);
 
-        final int secondaryProgressRight = progressLeft + (int)(secondProgressRatio() * (progressRight - progressLeft));
+        final int secondaryProgressRight = progressLeft + (int) (secondProgressRatio() * (progressRight - progressLeft));
         mSecondaryProgressDrawable.setBounds(progressLeft, progressTop, secondaryProgressRight, progressBottom);
         mSecondaryProgressDrawable.draw(canvas);
 
+        // draw indicators
+        float indicatorStep = (progressRight - progressLeft) / ((mIndicatorCount + 1) * 1.0f);
+        final int indicatorWidth = mIndicatorDrawable.getIntrinsicWidth();
+        final int indicatorHeight = mIndicatorDrawable.getIntrinsicHeight();
 
+        for (int i = 1; i <= mIndicatorCount; i++) {
+            int left = (int) (progressLeft + i * indicatorStep);
+            int top = progressBottom;
+            int right = left + indicatorWidth;
+            int bottom = top + indicatorHeight;
+            Rect bounds = new Rect(left, top, right, bottom);
+            mIndicatorDrawable.setBounds(bounds);
+            mIndicatorDrawable.draw(canvas);
+        }
+
+        //calculate text baseline
+        float ascent = mPaintText.ascent();
+        final int outIndicatorHeight = mIndicatorDrawable.getIntrinsicHeight() - mProgressDrawablePadding;
+        float baseline = paddingTop + getGrowthDrawableHeight();
+        if (outIndicatorHeight > 0) {
+            baseline += outIndicatorHeight;
+        }
+        baseline += mIndicatorPadding;
+        baseline -= ascent;
+
+        // draw text
+        canvas.drawText(String.valueOf(mGrowthValues[0]), paddingLeft, baseline, mPaintText);
+
+        final String nextGrowthValue = String.valueOf(mGrowthValues[mIndicatorCount + 1]);
+        final float nextGrowthValueWidth = mPaintText.measureText(nextGrowthValue);
+        canvas.drawText(nextGrowthValue, measuredWidth - paddingRight - nextGrowthValueWidth, baseline, mPaintText);
+
+        for (int i = 1; i <= mIndicatorCount; i++) {
+            final String growthValue = String.valueOf(mGrowthValues[i]);
+            final float growthValueWidth = mPaintText.measureText(growthValue);
+            float x = progressLeft + i * indicatorStep - growthValueWidth / 2;
+            canvas.drawText(growthValue, x, baseline, mPaintText);
+        }
     }
 
     private int getProgressDrawableHeight() {
@@ -198,15 +288,14 @@ public class UserGrowthView extends View {
     }
 
     private int getGrowthDrawableHeight() {
-        int leftGrowthDrawableHeight = mLeftGrowthDrawable.getIntrinsicHeight();
-        int rightGrowthDrawableHeight = mRightGrowthDrawable.getIntrinsicHeight();
+        int leftGrowthDrawableHeight = mPreGrowthDrawable.getIntrinsicHeight();
+        int rightGrowthDrawableHeight = mNextGrowthDrawable.getIntrinsicHeight();
         return Math.max(leftGrowthDrawableHeight, rightGrowthDrawableHeight);
     }
 
-
     private float secondProgressRatio() {
         int all = mAdapter.getNextGrowthValue() - mAdapter.getPreGrowthValue();
-        int current = mAdapter.getCurrentGrowthValue() - mAdapter.getPreGrowthValue();
-        return current * 1.0f / all;
+        int cur = mAdapter.getCurrentGrowthValue() - mAdapter.getPreGrowthValue();
+        return cur * 1.0f / all;
     }
 }

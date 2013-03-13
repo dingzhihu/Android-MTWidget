@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_user_growth_view_drawable_padding">3dp</dimen>
-    <dimen name="default_user_growth_view_progress_drawable_padding_bottom">3dp</dimen>
+    <dimen name="default_user_growth_view_progress_drawable_padding">3dp</dimen>
+    <dimen name="default_user_growth_view_indicator_padding">3dp</dimen>
+    <integer name="default_user_growth_view_indicator_count">3</integer>
+    <dimen name="default_user_growth_view_text_size">10sp</dimen>
+    <color name="default_user_growth_view_text_color">#FF999999</color>
 </resources>
