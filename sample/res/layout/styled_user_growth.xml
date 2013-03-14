@@ -22,6 +22,6 @@
         android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:textColor="#0000ff"
-        mt:user_growth_indicator_count="5" />
+        mt:indicator_count="5" />
 
 </LinearLayout>
