@@ -40,5 +40,14 @@
                 <category android:name="com.meituan.android.widget.sample.SAMPLE" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".menu.SampleMenu"
+            android:label="Menu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.meituan.android.widget.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

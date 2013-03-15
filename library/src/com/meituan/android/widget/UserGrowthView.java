@@ -88,6 +88,7 @@ public class UserGrowthView extends View {
         mPaintText.setColor(a.getColor(R.styleable.UserGrowthView_android_textColor, defaultTextColor));
 
         a.recycle();
+
     }
 
     public void setAdapter(UserGrowthAdapter adapter) {

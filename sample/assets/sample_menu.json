@@ -1,0 +1,134 @@
+[
+  [
+    {
+      "content" : "凉菜",
+      "type" : "0"
+    },
+    {
+      "content" : "珍味拼（海草、海螺、八爪鱼）",
+      "price" : "84",
+      "specification" : "1份",
+      "total" : "84",
+      "type" : "128"
+    },
+    {
+      "content" : "刺身",
+      "type" : "0"
+    },
+    {
+      "content" : "生鱼刺身拼盘",
+      "price" : "168",
+      "specification" : "1份",
+      "total" : "168",
+      "type" : "128"
+    },
+    {
+      "content" : "铁板类",
+      "type" : "0"
+    },
+    {
+      "content" : "法式鹅肝  ",
+      "price" : "98",
+      "specification" : "1份/约100g",
+      "total" : "98",
+      "type" : "128"
+    },
+    {
+      "content" : "香煎鳕鱼",
+      "price" : "58",
+      "specification" : "1份/2片",
+      "total" : "58",
+      "type" : "128"
+    },
+    {
+      "content" : "菲力牛排 ",
+      "price" : "75",
+      "specification" : "1份/约100g",
+      "total" : "75",
+      "type" : "128"
+    },
+    {
+      "content" : "扇贝 ",
+      "price" : "18",
+      "specification" : "2个",
+      "total" : "36",
+      "type" : "128"
+    },
+    {
+      "content" : "泰式黑虎虾",
+      "price" : "14",
+      "specification" : "2只",
+      "total" : "28",
+      "type" : "128"
+    },
+    {
+      "content" : " 炒时蔬",
+      "price" : "28",
+      "specification" : "1份",
+      "total" : "28",
+      "type" : "128"
+    },
+    {
+      "content" : "寿司",
+      "type" : "0"
+    },
+    {
+      "content" : "坪亭之恋",
+      "price" : "35",
+      "specification" : "1份/4块",
+      "total" : "35",
+      "type" : "128"
+    },
+    {
+      "content" : "汤品",
+      "type" : "0"
+    },
+    {
+      "content" : "松茸汤",
+      "price" : "35",
+      "specification" : "1壶",
+      "total" : "35",
+      "type" : "128"
+    },
+    {
+      "content" : "主食",
+      "type" : "0"
+    },
+    {
+      "content" : "大蒜牛肉炒饭 ",
+      "price" : "12.5",
+      "specification" : "2碗",
+      "total" : "25",
+      "type" : "128"
+    },
+    {
+      "content" : "绿茶饼",
+      "price" : "6",
+      "specification" : "2个",
+      "total" : "12",
+      "type" : "128"
+    },
+    {
+      "content" : "甜品",
+      "type" : "0"
+    },
+    {
+      "content" : "红豆冰激凌",
+      "price" : "12.5",
+      "specification" : "2个",
+      "total" : "25",
+      "type" : "128"
+    },
+    {
+      "content" : "水果拼盘",
+      "price" : "38",
+      "specification" : "1份",
+      "total" : "38",
+      "type" : "128"
+    },
+    {
+      "content" : "生鱼刺身拼盘内含：三文鱼、北极贝、加吉鱼、红金枪、鲈鱼共5种各3片\n水果拼盘内含：西瓜、木瓜、哈密瓜、火龙果各2片",
+      "type" : "0"
+    }
+  ]
+]

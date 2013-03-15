@@ -1,0 +1,42 @@
+[
+  [
+    {
+      "content" : "凉菜",
+      "type" : "0"
+    },
+    {
+      "content" : "香草原味泡芙",
+      "price" : "10",
+      "specification" : "2份",
+      "total" : "20",
+      "type" : "128"
+    },
+    {
+      "content" : "清新抹茶泡芙",
+      "price" : "12",
+      "specification" : "1份",
+      "total" : "12",
+      "type" : "128"
+    }
+  ],
+  [
+    {
+      "content" : "凉菜",
+      "type" : "0"
+    },
+    {
+      "content" : "香草原味泡芙",
+      "price" : "10",
+      "specification" : "2份",
+      "total" : "20",
+      "type" : "128"
+    },
+    {
+      "content" : "清新抹茶泡芙",
+      "price" : "12",
+      "specification" : "1份",
+      "total" : "12",
+      "type" : "128"
+    }
+  ]
+]

@@ -6,4 +6,14 @@
     <integer name="default_user_growth_view_indicator_count">3</integer>
     <dimen name="default_user_growth_view_text_size">10sp</dimen>
     <color name="default_user_growth_view_text_color">#FF999999</color>
+
+    <dimen name="default_menu_view_text_size">15sp</dimen>
+    <color name="default_menu_view_title_color">#FF333333</color>
+    <color name="default_menu_view_content_color">#FF666666</color>
+    <dimen name="default_menu_view_sep_padding">13dp</dimen>
+    <dimen name="default_menu_view_title_padding">6dp</dimen>
+    <dimen name="default_menu_view_content_padding">3dp</dimen>
+    <dimen name="default_menu_view_price_padding">3dp</dimen>
+
+
 </resources>

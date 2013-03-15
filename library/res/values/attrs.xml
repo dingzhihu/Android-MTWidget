@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="MTWidget">
         <attr name="mtUserGrowthViewStyle" format="reference" />
+        <attr name="mtMenuViewStyle" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="UserGrowthView">
@@ -21,6 +22,17 @@
         <attr name="indicator_count" format="integer" />
         <attr name="android:textSize" />
         <attr name="android:textColor" />
+    </declare-styleable>
+
+    <declare-styleable name="MenuView">
+        <attr name="title_size" format="dimension" />
+        <attr name="title_color" format="color" />
+        <attr name="content_size" format="dimension" />
+        <attr name="content_color" format="color" />
+        <attr name="sep_padding" format="dimension" />
+        <attr name="title_padding" format="dimension" />
+        <attr name="content_padding" format="dimension" />
+        <attr name="price_padding" format="dimension" />
 
     </declare-styleable>
 </resources>
