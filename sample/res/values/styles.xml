@@ -10,4 +10,8 @@
         <item name="progress_drawable_padding">5dp</item>
     </style>
 
+    <style name="CustomAlphabetView">
+        <item name="alphabetPadding">10dp</item>
+    </style>
+
 </resources>

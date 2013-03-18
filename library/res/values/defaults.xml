@@ -15,5 +15,10 @@
     <dimen name="default_menu_view_content_padding">3dp</dimen>
     <dimen name="default_menu_view_price_padding">3dp</dimen>
 
+    <dimen name="default_alphabet_view_alphabet_padding">5dp</dimen>
+    <dimen name="default_alphabet_view_text_size">15sp</dimen>
+    <color name="default_alphabet_view_text_color">@android:color/white</color>
+    <color name="default_alphabet_view_path_color">#40666666</color>
+    <dimen name="default_alphabet_view_path_radius">5dp</dimen>
 
 </resources>

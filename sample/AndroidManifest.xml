@@ -13,6 +13,7 @@
             </intent-filter>
         </activity>
 
+        <!-- user growth view-->
         <activity
             android:name=".usergrowth.SampleUserGrowthDefault"
             android:label="UserGrowth/Default">
@@ -41,9 +42,29 @@
             </intent-filter>
         </activity>
 
+        <!-- menu view-->
         <activity
             android:name=".menu.SampleMenu"
             android:label="Menu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.meituan.android.widget.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+        <!-- alphabet view-->
+        <activity
+            android:name=".alphabet.SampleAlphabetDefault"
+            android:label="Alphabet/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.meituan.android.widget.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".alphabet.SampleAlphabetStyled"
+            android:label="Alphabet/Styled">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.meituan.android.widget.sample.SAMPLE" />

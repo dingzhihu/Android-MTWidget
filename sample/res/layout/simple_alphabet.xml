@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.meituan.android.widget.AlphabetView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mt="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alphabet"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    mt:alphabetPadding="2dp"
+    android:textSize="13sp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    />
+
+

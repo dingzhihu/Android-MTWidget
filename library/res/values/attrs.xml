@@ -3,6 +3,7 @@
     <declare-styleable name="MTWidget">
         <attr name="mtUserGrowthViewStyle" format="reference" />
         <attr name="mtMenuViewStyle" format="reference" />
+        <attr name="mtAlphabetViewStyle" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="UserGrowthView">
@@ -33,6 +34,13 @@
         <attr name="title_padding" format="dimension" />
         <attr name="content_padding" format="dimension" />
         <attr name="price_padding" format="dimension" />
+    </declare-styleable>
 
+    <declare-styleable name="AlphabetView">
+        <attr name="alphabetPadding" format="dimension" />
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="pathColor" format="color" />
+        <attr name="pathRadius" format="dimension" />
     </declare-styleable>
 </resources>

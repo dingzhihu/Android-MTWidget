@@ -17,9 +17,9 @@ public class SampleMenu extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_view);
+        setContentView(R.layout.menu);
 
-        mMenuView = (MenuView) findViewById(R.id.menu_view);
+        mMenuView = (MenuView) findViewById(R.id.menu);
         mMenuView.setAdapter(new SampleMenuAdapter(this));
 //        mMenuView.setAdapter(new SampleMenuAdapter(this, "sample_menu_simple.json"));
     }
