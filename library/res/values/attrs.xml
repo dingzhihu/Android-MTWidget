@@ -7,33 +7,33 @@
     </declare-styleable>
 
     <declare-styleable name="UserGrowthView">
-        <attr name="drawable_0" format="reference" />
-        <attr name="drawable_1" format="reference" />
-        <attr name="drawable_2" format="reference" />
-        <attr name="drawable_3" format="reference" />
-        <attr name="drawable_4" format="reference" />
-        <attr name="drawable_5" format="reference" />
-        <attr name="drawable_6" format="reference" />
+        <attr name="drawable0" format="reference" />
+        <attr name="drawable1" format="reference" />
+        <attr name="drawable2" format="reference" />
+        <attr name="drawable3" format="reference" />
+        <attr name="drawable4" format="reference" />
+        <attr name="drawable5" format="reference" />
+        <attr name="drawable6" format="reference" />
         <attr name="android:drawablePadding" />
-        <attr name="progress_drawable" format="reference" />
-        <attr name="secondary_progress_drawable" format="reference" />
-        <attr name="progress_drawable_padding" format="dimension" />
-        <attr name="indicator_drawable" format="reference" />
-        <attr name="indicator_padding" format="dimension" />
-        <attr name="indicator_count" format="integer" />
+        <attr name="progressDrawable" format="reference" />
+        <attr name="secondaryProgressDrawable" format="reference" />
+        <attr name="progressDrawablePadding" format="dimension" />
+        <attr name="indicatorDrawable" format="reference" />
+        <attr name="indicatorPadding" format="dimension" />
+        <attr name="indicatorCount" format="integer" />
         <attr name="android:textSize" />
         <attr name="android:textColor" />
     </declare-styleable>
 
     <declare-styleable name="MenuView">
-        <attr name="title_size" format="dimension" />
-        <attr name="title_color" format="color" />
-        <attr name="content_size" format="dimension" />
-        <attr name="content_color" format="color" />
-        <attr name="sep_padding" format="dimension" />
-        <attr name="title_padding" format="dimension" />
-        <attr name="content_padding" format="dimension" />
-        <attr name="price_padding" format="dimension" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleColor" format="color" />
+        <attr name="contentSize" format="dimension" />
+        <attr name="contentColor" format="color" />
+        <attr name="sepPadding" format="dimension" />
+        <attr name="titlePadding" format="dimension" />
+        <attr name="contentPadding" format="dimension" />
+        <attr name="pricePadding" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="AlphabetView">

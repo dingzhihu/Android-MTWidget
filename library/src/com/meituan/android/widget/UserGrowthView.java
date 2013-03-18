@@ -57,30 +57,30 @@ public class UserGrowthView extends View {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.UserGrowthView, defStyle, 0);
         mGrowthDrawables = new Drawable[MAX_GROWTH + 1];
-        mGrowthDrawables[0] = a.getDrawable(R.styleable.UserGrowthView_drawable_0);
-        mGrowthDrawables[1] = a.getDrawable(R.styleable.UserGrowthView_drawable_1);
-        mGrowthDrawables[2] = a.getDrawable(R.styleable.UserGrowthView_drawable_2);
-        mGrowthDrawables[3] = a.getDrawable(R.styleable.UserGrowthView_drawable_3);
-        mGrowthDrawables[4] = a.getDrawable(R.styleable.UserGrowthView_drawable_4);
-        mGrowthDrawables[5] = a.getDrawable(R.styleable.UserGrowthView_drawable_5);
-        mGrowthDrawables[6] = a.getDrawable(R.styleable.UserGrowthView_drawable_6);
+        mGrowthDrawables[0] = a.getDrawable(R.styleable.UserGrowthView_drawable0);
+        mGrowthDrawables[1] = a.getDrawable(R.styleable.UserGrowthView_drawable1);
+        mGrowthDrawables[2] = a.getDrawable(R.styleable.UserGrowthView_drawable2);
+        mGrowthDrawables[3] = a.getDrawable(R.styleable.UserGrowthView_drawable3);
+        mGrowthDrawables[4] = a.getDrawable(R.styleable.UserGrowthView_drawable4);
+        mGrowthDrawables[5] = a.getDrawable(R.styleable.UserGrowthView_drawable5);
+        mGrowthDrawables[6] = a.getDrawable(R.styleable.UserGrowthView_drawable6);
 
-        Drawable drawable = a.getDrawable(R.styleable.UserGrowthView_progress_drawable);
+        Drawable drawable = a.getDrawable(R.styleable.UserGrowthView_progressDrawable);
         mProgressDrawable = (NinePatchDrawable) (drawable == null ? res.getDrawable(R.drawable.user_growth_progress) :
                 drawable);
         mDrawablePadding = (int) a.getDimension(R.styleable.UserGrowthView_android_drawablePadding, defaultDrawablePadding);
 
-        drawable = a.getDrawable(R.styleable.UserGrowthView_secondary_progress_drawable);
+        drawable = a.getDrawable(R.styleable.UserGrowthView_secondaryProgressDrawable);
         mSecondaryProgressDrawable = (NinePatchDrawable) (drawable == null ? res.getDrawable(R.drawable.user_growth_secondary_progress) :
                 drawable);
-        mProgressDrawablePadding = (int) a.getDimension(R.styleable.UserGrowthView_progress_drawable_padding,
+        mProgressDrawablePadding = (int) a.getDimension(R.styleable.UserGrowthView_progressDrawablePadding,
                 defaultProgressDrawablePadding);
 
-        drawable = a.getDrawable(R.styleable.UserGrowthView_indicator_drawable);
+        drawable = a.getDrawable(R.styleable.UserGrowthView_indicatorDrawable);
         mIndicatorDrawable = (drawable == null ? res.getDrawable(R.drawable.user_growth_indicator) : drawable);
-        mIndicatorPadding = a.getDimension(R.styleable.UserGrowthView_indicator_padding,
+        mIndicatorPadding = a.getDimension(R.styleable.UserGrowthView_indicatorPadding,
                 defaultIndicatorPadding);
-        mIndicatorCount = a.getInt(R.styleable.UserGrowthView_indicator_count, defaultIndicatorCount);
+        mIndicatorCount = a.getInt(R.styleable.UserGrowthView_indicatorCount, defaultIndicatorCount);
 
         mPaintText = new Paint();
         mPaintText.setAntiAlias(true);

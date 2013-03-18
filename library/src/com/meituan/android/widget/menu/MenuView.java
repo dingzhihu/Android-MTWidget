@@ -51,20 +51,20 @@ public class MenuView extends View {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MenuView, defStyle, 0);
 
-        mSepPadding = a.getDimension(R.styleable.MenuView_sep_padding, defaultSepPadding);
-        mTitlePadding = a.getDimension(R.styleable.MenuView_title_padding, defaultTitlePadding);
-        mContentPadding = a.getDimension(R.styleable.MenuView_content_padding, defaultContentPadding);
-        mPricePadding = a.getDimension(R.styleable.MenuView_price_padding, defaultPricePadding);
+        mSepPadding = a.getDimension(R.styleable.MenuView_sepPadding, defaultSepPadding);
+        mTitlePadding = a.getDimension(R.styleable.MenuView_titlePadding, defaultTitlePadding);
+        mContentPadding = a.getDimension(R.styleable.MenuView_contentPadding, defaultContentPadding);
+        mPricePadding = a.getDimension(R.styleable.MenuView_pricePadding, defaultPricePadding);
 
         mPaintTitle = new Paint();
         mPaintTitle.setAntiAlias(true);
-        mPaintTitle.setTextSize(a.getDimension(R.styleable.MenuView_title_size, defaultTextSize));
-        mPaintTitle.setColor(a.getColor(R.styleable.MenuView_title_color, defaultTitleColor));
+        mPaintTitle.setTextSize(a.getDimension(R.styleable.MenuView_titleSize, defaultTextSize));
+        mPaintTitle.setColor(a.getColor(R.styleable.MenuView_titleColor, defaultTitleColor));
 
         mPaintContent = new Paint();
         mPaintContent.setAntiAlias(true);
-        mPaintContent.setTextSize(a.getDimension(R.styleable.MenuView_content_size, defaultTextSize));
-        mPaintContent.setColor(a.getColor(R.styleable.MenuView_content_color, defaultContentColor));
+        mPaintContent.setTextSize(a.getDimension(R.styleable.MenuView_contentSize, defaultTextSize));
+        mPaintContent.setColor(a.getColor(R.styleable.MenuView_contentColor, defaultContentColor));
 
         a.recycle();
     }
